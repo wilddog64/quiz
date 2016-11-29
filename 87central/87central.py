@@ -28,9 +28,9 @@ def get_utc_offset():
     calculates the utc offset base on current time zone
     the return is offset in hour
     '''
-    tz         = get_localzone()
-    d          = datetime.datetime.now(tz)
-    utc_offset = int(d.utcoffset().total_seconds() // 3600)
+    tz         = get_localzone() # get local time zone
+    d          = datetime.datetime.now(tz) # get current time base on time zone we know about
+    utc_offset = int(d.utcoffset().total_seconds() // 3600) # get utc offset base hour units
     return utc_offset
 
 def to_calendar_format(date):
