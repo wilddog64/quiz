@@ -43,22 +43,6 @@ def to_calendar_format(date):
 
     return current_utc_time.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
 
-def rounding_time(dt=None, deltaTime=relativedelta(microseconds=1)):
-    '''
-    round a given time to the nearest delta time. default is 1 microssecond.
-    return is an integer
-    '''
-    if dt is None:
-        dt = datetime.datetime.now()
-    elif type(dt) is str:
-        dt = parser.parse(dt)
-
-    roundTo = deltaTime.seconds
-    seconds = (dt.replace(tzinfo=None) - dt.min).seconds
-    rounding = (seconds + roundTo / 2)
-    rounded = dt + datetime.timedelta(0, rounding - seconds, -dt.microsecond)
-
-    return rounded
 
 if __name__ == '__main__':
     datetime_stamp = '2015/01/07 2:29 PM'
@@ -67,8 +51,7 @@ if __name__ == '__main__':
     print('one hour early than %s is %s' % (datetime_stamp, one_hour_early(datetime_stamp)))
     print('is current timezone CST? %s' % is_central_time())
 
-    current_timestamp = '2014-02-08 06:00 PM PST' # PST Time
-    current_iso_utc_time = rounding_time(to_calendar_format(current_timestamp))
+    current_timestamp = '2014-02-08 06:30 PM PST' # PST Time
+    current_iso_utc_time = to_calendar_format(current_timestamp)
 
-    print('PST time %s is UTC %s' % (current_timestamp,
-                                     datetime.datetime.strftime(current_iso_utc_time, '%Y-%m-%dT%H:%M:%S.%fZ')))
+    print('PST time %s is UTC %s' % (current_timestamp, current_iso_utc_time))
