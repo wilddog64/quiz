@@ -16,7 +16,7 @@ def one_hour_early(date):
 
 def is_central_time():
     '''
-    this function calcuates the utc_offset via local timezone, obtrains from 
+    this function calcuates the utc_offset via local timezone, obtrains from
     /etc/localtime. If utc_offset is not -6 then return False; otherwise return
     true. This is because Central time is UTC-6.
     '''
@@ -43,7 +43,7 @@ def to_calendar_format(date):
 
     return current_utc_time.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
 
-def rounding_time(dt=None, deltaTime=relativedelta(minutes=1)):
+def rounding_time(dt=None, deltaTime=relativedelta(microseconds=1)):
     if dt is None:
         dt = datetime.datetime.now()
     elif type(dt) is str:
@@ -53,7 +53,7 @@ def rounding_time(dt=None, deltaTime=relativedelta(minutes=1)):
     seconds = (dt.replace(tzinfo=None) - dt.min).seconds
     rounding = (seconds + roundTo / 2)
     rounded = dt + datetime.timedelta(0, rounding - seconds, -dt.microsecond)
-    
+
     return rounded
 
 if __name__ == '__main__':
@@ -64,7 +64,7 @@ if __name__ == '__main__':
     print('is current timezone CST? %s' % is_central_time())
 
     current_timestamp = '2014-02-08 06:00 PM PST' # PST Time
-    current_iso_utc_time = rounding_time(to_calendar_format(current_timestamp),
-                                                           deltaTime=datetime.timedelta(microseconds=2))
+    current_iso_utc_time = rounding_time(to_calendar_format(current_timestamp))
+
     print('PST time %s is UTC %s' % (current_timestamp,
                                      datetime.datetime.strftime(current_iso_utc_time, '%Y-%m-%dT%H:%M:%S.%fZ')))
