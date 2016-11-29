@@ -11,7 +11,7 @@ def one_hour_early(date):
     this function will return one hour early than the current input time
     '''
     current_datetime = parser.parse(date)
-    time_delta = datetime.timedelta(hours=1)
+    time_delta = relativedelta(hours=1)
     return (current_datetime - time_delta).strftime('%Y-%m-%d %I:%M %p %Z')
 
 def is_central_time():
