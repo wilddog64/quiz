@@ -44,6 +44,10 @@ def to_calendar_format(date):
     return current_utc_time.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
 
 def rounding_time(dt=None, deltaTime=relativedelta(microseconds=1)):
+    '''
+    round a given time to the nearest delta time. default is 1 microssecond.
+    return is an integer
+    '''
     if dt is None:
         dt = datetime.datetime.now()
     elif type(dt) is str:
