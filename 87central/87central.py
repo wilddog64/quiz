@@ -49,7 +49,7 @@ def rounding_time(dt=None, deltaTime=relativedelta(microseconds=1)):
     elif type(dt) is str:
         dt = parser.parse(dt)
 
-    roundTo = deltaTime.total_seconds()
+    roundTo = deltaTime.seconds
     seconds = (dt.replace(tzinfo=None) - dt.min).seconds
     rounding = (seconds + roundTo / 2)
     rounded = dt + datetime.timedelta(0, rounding - seconds, -dt.microsecond)
