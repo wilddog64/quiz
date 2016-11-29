@@ -52,7 +52,9 @@ def rounding_time(dt=None, deltaTime=relativedelta(minutes=1)):
     roundTo = deltaTime.total_seconds()
     seconds = (dt.replace(tzinfo=None) - dt.min).seconds
     rounding = (seconds + roundTo / 2)
-    return dt + datetime.timedelta(0, rounding - seconds, -dt.microsecond)
+    rounded = dt + datetime.timedelta(0, rounding - seconds, -dt.microsecond)
+    
+    return rounded
 
 if __name__ == '__main__':
     datetime_stamp = '2015/01/07 2:29 PM'
