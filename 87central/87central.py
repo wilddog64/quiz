@@ -51,7 +51,7 @@ if __name__ == '__main__':
     print('one hour early than %s is %s' % (datetime_stamp, one_hour_early(datetime_stamp)))
     print('is current timezone CST? %s' % is_central_time())
 
-    current_timestamp    = '2014-02-08 06:30 PM PST' # PST Time
+    current_timestamp    = '2014-02-08 06:30 PM'
     current_iso_utc_time = to_calendar_format(current_timestamp)
 
     print('PST time %s is UTC %s' % (current_timestamp, current_iso_utc_time))
