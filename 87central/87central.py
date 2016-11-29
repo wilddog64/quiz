@@ -11,7 +11,7 @@ def one_hour_early(date):
     this function will return one hour early than the current input time
     '''
     current_datetime = parser.parse(date)
-    time_delta = relativedelta(hours=1)
+    time_delta       = relativedelta(hours = 1)
     return (current_datetime - time_delta).strftime('%Y-%m-%d %I:%M %p %Z')
 
 def is_central_time():
@@ -28,8 +28,8 @@ def get_utc_offset():
     calculates the utc offset base on current time zone
     the return is offset in hour
     '''
-    tz = get_localzone()
-    d = datetime.datetime.now(tz)
+    tz         = get_localzone()
+    d          = datetime.datetime.now(tz)
     utc_offset = int(d.utcoffset().total_seconds() // 3600)
     return utc_offset
 
@@ -38,7 +38,7 @@ def to_calendar_format(date):
     this function will return an input date's UTC time in ISO 8601 format
     '''
     current_datetime = parser.parse(date)
-    utc_offset = get_utc_offset()
+    utc_offset       = get_utc_offset()
     current_utc_time = current_datetime + relativedelta(hours=utc_offset)
 
     return current_utc_time.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     print('one hour early than %s is %s' % (datetime_stamp, one_hour_early(datetime_stamp)))
     print('is current timezone CST? %s' % is_central_time())
 
-    current_timestamp = '2014-02-08 06:30 PM PST' # PST Time
+    current_timestamp    = '2014-02-08 06:30 PM PST' # PST Time
     current_iso_utc_time = to_calendar_format(current_timestamp)
 
     print('PST time %s is UTC %s' % (current_timestamp, current_iso_utc_time))
