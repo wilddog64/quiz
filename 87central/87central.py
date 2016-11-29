@@ -20,10 +20,13 @@ def is_central_time():
     /etc/localtime. If utc_offset is not -6 then return False; otherwise return
     true. This is because Central time is UTC-6.
     '''
+    utc_offset = get_utc_offset()
+    return utc_offset == -6.0
+
+def get_utc_offset():
     tz = get_localzone()
     d = datetime.datetime.now(tz)
-    utc_offset = d.utcoffset().total_seconds() // 3600
-    return utc_offset == -6.0
+    return d.utcoffset().total_seconds() // 3600
 
 def to_calendar_format(date):
     '''
