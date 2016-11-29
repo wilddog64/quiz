@@ -24,10 +24,13 @@ def is_central_time():
     return utc_offset == -6.0
 
 def get_utc_offset():
+    '''
+    calculates the utc offset base on current time zone
+    the return is offset in hour
+    '''
     tz = get_localzone()
     d = datetime.datetime.now(tz)
-    utc_offset = d.utcoffset().total_seconds() // 3600
-    print('utc offset %s' % utc_offset)
+    utc_offset = int(d.utcoffset().total_seconds() // 3600)
     return utc_offset
 
 def to_calendar_format(date):
