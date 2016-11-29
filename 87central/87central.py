@@ -26,15 +26,17 @@ def is_central_time():
 def get_utc_offset():
     tz = get_localzone()
     d = datetime.datetime.now(tz)
-    return d.utcoffset().total_seconds() // 3600
+    utc_offset = d.utcoffset().total_seconds() // 3600
+    print('utc offset %s' % utc_offset)
+    return utc_offset
 
 def to_calendar_format(date):
     '''
     this function will return an input date's UTC time in ISO 8601 format
     '''
     current_datetime = parser.parse(date)
-    utc_offset = datetime.datetime.utcnow() - datetime.datetime.now()
-    current_utc_time = current_datetime + utc_offset
+    utc_offset = get_utc_offset()
+    current_utc_time = current_datetime + relativedelta(hours=utc_offset)
 
     return current_utc_time.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
 
