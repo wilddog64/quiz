@@ -1,0 +1,6 @@
+Tweet Acrostics is a program that tries composes an acrostics from tweets.txt and 
+verifies that acrostics is a valid word by looking up words-lowercase.txt
+
+The language that I used to solve the problem is perl and there are no libraries used
+
+There's a perl script, acrostic.pl, and an output file, acrostics.out.txt
