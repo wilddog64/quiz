@@ -62,9 +62,9 @@ if __name__ == '__main__':
     print('is current timezone CST? %s' % is_central_time())
 
     current_timestamp = '2014-02-08 06:00 PM PST' # PST Time
-    current_iso_utc_time = rounding_time(to_calendar_format(current_timestamp), deltaTime=datetime.timedelta(seconds=2))
+    current_iso_utc_time = rounding_time(to_calendar_format(current_timestamp), deltaTime=datetime.timedelta(microseconds=2))
     print('PST time %s is UTC %s' % (current_timestamp, datetime.datetime.strftime(current_iso_utc_time, '%Y-%m-%dT%H:%M:%S.%fZ')))
 
     current_timestamp = '2014-02-08 05:00 PM MST' # PST Time
-    current_iso_utc_time = rounding_time(to_calendar_format(current_timestamp), deltaTime=datetime.timedelta(seconds=2))
+    current_iso_utc_time = rounding_time(to_calendar_format(current_timestamp), deltaTime=datetime.timedelta(microseconds=2))
     print('MST time %s is UTC %s' % (current_timestamp, datetime.datetime.strftime(current_iso_utc_time, '%Y-%m-%dT%H:%M:%S.%fZ')))
