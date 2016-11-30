@@ -43,3 +43,9 @@ Python is a language as choose.
 
 ## Source
 ./87central/87central.out.txt
+
+## Development Tools
+
+* vi as a primary editor
+* ipython for experienmenting expression
+* python -m pdb for debugging

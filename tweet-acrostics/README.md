@@ -21,3 +21,9 @@ acrostics.out.txt
 
 ## Source
 ./tweet-acrostics/acrostic.pl in the directory
+
+## Development Tools
+
+* vi as a primary editor
+* perl -de0 for interactive perl console
+* perl -d for debugging
