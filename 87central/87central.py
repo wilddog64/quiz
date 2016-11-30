@@ -1,5 +1,6 @@
 from __future__ import print_function
 import datetime
+import os
 from dateutil import parser
 from dateutil.relativedelta import *
 from dateutil.tz import *
@@ -21,14 +22,19 @@ def is_central_time():
     true. This is because Central time is UTC-6.
     '''
     utc_offset = get_utc_offset()
-    return utc_offset == -6.0
+    central_offset = get_utc_offset('America/Regina')
+    return utc_offset == central_offset
 
-def get_utc_offset():
+def get_utc_offset(tz=None):
     '''
     calculates the utc offset base on current time zone
     the return is offset in hour
     '''
-    tz         = get_localzone() # get local time zone
+    if tz is None:
+       tz = get_localzone() # get local time zone
+    else:
+       tz = gettz(tz)
+
     d          = datetime.datetime.now(tz) # get current time base on time zone we know about
     utc_offset = int(d.utcoffset().total_seconds() // 3600) # get utc offset base hour units
     return utc_offset
