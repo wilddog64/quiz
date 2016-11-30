@@ -17,9 +17,8 @@ def one_hour_early(date):
 
 def is_central_time():
     '''
-    this function calcuates the utc_offset via get_utc_offset function, obtrains from
-    /etc/localtime. If utc_offset is not -6 then return False; otherwise return
-    true. This is because Central time is UTC-6.
+    this function return a given time from the computer is a central time or not.
+    return true if it is; false otherwise.
     '''
     utc_offset = get_utc_offset()
     central_offset = get_utc_offset('America/Regina')
