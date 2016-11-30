@@ -1,6 +1,5 @@
 from __future__ import print_function
 import datetime
-import os
 from dateutil import parser
 from dateutil.relativedelta import *
 from dateutil.tz import *
@@ -38,12 +37,12 @@ def get_utc_offset(tz=None):
     utc_offset = int(d.utcoffset().total_seconds() // 3600) # get utc offset base hour units
     return utc_offset
 
-def to_calendar_format(date):
+def to_calendar_format(date, tz=None):
     '''
     this function will return an input date's UTC time in ISO 8601 format
     '''
     current_datetime = parser.parse(date)
-    utc_offset       = get_utc_offset()
+    utc_offset       = get_utc_offset(tz)
     current_utc_time = current_datetime + relativedelta(hours=utc_offset)
 
     return current_utc_time.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
@@ -58,5 +57,4 @@ if __name__ == '__main__':
 
     current_timestamp    = '2014-02-08 06:30 PM'
     current_iso_utc_time = to_calendar_format(current_timestamp)
-
     print('PST time %s is UTC %s' % (current_timestamp, current_iso_utc_time))
