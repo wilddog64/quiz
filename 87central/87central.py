@@ -26,7 +26,8 @@ def is_central_time():
 def get_utc_offset(tz=None):
     '''
     calculates the utc offset base on current time zone
-    the return is offset in hour
+    the return is offset in hour; or if time zone (tz) is
+    passed in, return the utc offset from a that.
     '''
     if tz is None:
        tz = get_localzone() # get local time zone
