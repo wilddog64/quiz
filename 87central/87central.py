@@ -58,3 +58,15 @@ if __name__ == '__main__':
     current_timestamp    = '2014-02-08 06:30 PM'
     current_iso_utc_time = to_calendar_format(current_timestamp)
     print('PST time %s is UTC %s' % (current_timestamp, current_iso_utc_time))
+
+    current_timestamp    = '2014-02-08 06:30 PM'
+    current_iso_utc_time = to_calendar_format(current_timestamp, 'America/Phoenix')
+    print('MST time %s is UTC %s' % (current_timestamp, current_iso_utc_time))
+
+    current_timestamp    = '2014-02-08 06:30 PM'
+    current_iso_utc_time = to_calendar_format(current_timestamp, 'America/Monterrey')
+    print('CST time %s is UTC %s' % (current_timestamp, current_iso_utc_time))
+
+    current_timestamp    = '2014-02-08 06:30 PM'
+    current_iso_utc_time = to_calendar_format(current_timestamp, 'America/New_York')
+    print('EST time %s is UTC %s' % (current_timestamp, current_iso_utc_time))
