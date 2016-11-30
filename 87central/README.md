@@ -47,5 +47,6 @@ Python is a language as choose.
 ## Development Tools
 
 * vi as a primary editor
+* python 2.7.12
 * ipython for experienmenting expression
 * python -m pdb for debugging
