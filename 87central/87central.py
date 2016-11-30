@@ -40,7 +40,9 @@ def get_utc_offset(tz=None):
 
 def to_calendar_format(date, tz=None):
     '''
-    this function will return an input date's UTC time in ISO 8601 format
+    this function will return an input date's UTC time in ISO 8601 format. if
+    tz (time zone) is none, calculate will base on current time zone; otherwise
+    use a tz for the calculation.
     '''
     current_datetime = parser.parse(date)
     utc_offset       = get_utc_offset(tz)
